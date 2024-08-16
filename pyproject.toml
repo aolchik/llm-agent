@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "tool-evaluator-agent"
+version = "0.1.0"
+description = "Tool Evaluator Agent using crewAI"
+authors = ["Alejandro Olchik <alejandro@orulo.com.br>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = "^0.41.1" }
+
+[tool.poetry.scripts]
+tool-evaluator-agent = "tool_evaluator_agent.main:run"
+train = "tool_evaluator_agent.main:train"
+replay = "tool_evaluator_agent.main:replay"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

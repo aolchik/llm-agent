@@ -1,0 +1,41 @@
+
+criteria_clarification_task:
+  description: >
+    Provide a summary of the following criteria used to score the tools:
+    {criteria}
+    Include a brief explanation of each criteria and suggest a scoring approach.
+    Example: 
+      - Low vendor lock-in
+        - Explanation: refers to a situation where a software solution or platform is designed in such a way that it minimizes dependency on a single vendor or provider
+        - Scoring approach:
+          - Better if:
+            - There is interoperability: The software is compatible with other systems, platforms, or tools, often through the use of standard protocols, APIs, or open-source technologies.
+            - There is portability: The software can be easily moved or adapted to different environments
+            - Uses open standards
+            - Uses open-source software
+            - Has modular design
+          - Worse if
+            - Uses proprietary tools
+
+  expected_output: >
+    Brief explanation of each critearia and a scoring approach.
+
+research_task:
+  description: >
+    Conduct a comprehensive analysis of {topic}.
+    Identify platform trends, adoption, strenghts and weeknesses.
+  
+    Consider the following tools:
+    {tools}
+  expected_output: >
+    Full analysis report in bullet points
+
+reporting_task:
+  description: >
+    Using the insights provided, develop a report scoring the following attributes:
+    {criteria}
+    
+    Each attribute should be scored from 0 to 5.
+    Scores should be justified with a brief explanation.
+  expected_output: >
+    Comparison table with scores, followed by scores justification'```'
