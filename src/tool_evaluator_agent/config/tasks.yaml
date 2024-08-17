@@ -3,13 +3,15 @@ criteria_clarification_task:
   description: >
     Provide a summary of the following criteria used to score the tools:
     {criteria}
-    Include a brief explanation of each criteria and suggest a scoring approach.
+    1) Include a brief explanation of each criteria and suggest a scoring approach.
+    2) When possible offer concrete examples for the criteria.
+    3) Define the criteria so they have minimum overlap
     Example: 
       - Low vendor lock-in
         - Explanation: refers to a situation where a software solution or platform is designed in such a way that it minimizes dependency on a single vendor or provider
         - Scoring approach:
           - Better if:
-            - There is interoperability: The software is compatible with other systems, platforms, or tools, often through the use of standard protocols, APIs, or open-source technologies.
+            - There is interoperability: The software is compatible with other systems, platforms, or tools, often through the use of standard protocols, APIs, or open-source technologies. For example: support for the OpenAPI standard.
             - There is portability: The software can be easily moved or adapted to different environments
             - Uses open standards
             - Uses open-source software
@@ -23,12 +25,16 @@ criteria_clarification_task:
 research_task:
   description: >
     Conduct a comprehensive analysis of {topic}.
-    Identify platform trends, adoption, strenghts and weeknesses.
+    Identify platform trends, adoption, strenghts and weeknesses, mainly focusing on the following criteria:
+    {criteria}
   
     Consider the following tools:
     {tools}
   expected_output: >
-    Full analysis report in bullet points
+    Full analysis report with:
+    - bullet points for each tool,
+    - findings aggregated by criteria,
+    - references for criteria linked.
 
 reporting_task:
   description: >
@@ -37,5 +43,8 @@ reporting_task:
     
     Each attribute should be scored from 0 to 5.
     Scores should be justified with a brief explanation.
+    Score penalties need to include a link to the source reference.
   expected_output: >
-    Comparison table with scores, followed by scores justification'```'
+    1) Comparison table with scores
+    2) Attribute list, with a brief explanation of how eah attribute was evaluated
+    3) Scores justification with references.
