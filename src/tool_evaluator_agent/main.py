@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 import sys
 from tool_evaluator_agent.crew import ToolEvaluatorAgentCrew
+from helpers.tracer import Tracer
 
 from dotenv import load_dotenv
-import os
 
-import agentops
-from langtrace_python_sdk import langtrace
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding necessary logic into this file.
@@ -14,8 +12,8 @@ from langtrace_python_sdk import langtrace
 # interpolate any tasks and agents information
 
 load_dotenv()
-AGENTOPS_API_KEY = os.getenv("AGENTOPS_API_KEY")
-LANGTRACE_API_KEY = os.getenv("LANGTRACE_API_KEY")
+        
+tracer = Tracer()
 
 crew_inputs = {
     'topic': 'plaforms for developmet of applications that use LLM',
@@ -42,12 +40,13 @@ def run():
     Run the crew.
     """
     inputs = crew_inputs
-    agentops.init(AGENTOPS_API_KEY, default_tags=["tool-evaluator-agent"])
     
-    langtrace.init(api_key=LANGTRACE_API_KEY)
+    tracer.init(default_tags=['tool_evaluator_agent'])
     
     ToolEvaluatorAgentCrew().crew().kickoff(inputs=inputs)
-    agentops.end_session("Success")
+    
+    tracer.end()
+
 
 def train():
     """
