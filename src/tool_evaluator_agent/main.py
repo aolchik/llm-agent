@@ -18,13 +18,13 @@ tracer = Tracer()
 crew_inputs = {
     'topic': 'plaforms for developmet of applications that use LLM',
     'criteria': '''
-        - Support for agents
+        - Comprehensive support for the development of multi-step AI agents
         - Low vendor lock-in
         - Support for higher end LLM models (e.g. GPT-4, Gemini, ...)
         - Support for zero cost models (e.g. Open Hermes, ...)
         - Good documentation
         - Strong community support
-        - RAG support
+        - RAG (Retrieval-Augmented Generation) support
         - Rich ecosystem of integrations and toolkits
         ''',
     'tools': '''

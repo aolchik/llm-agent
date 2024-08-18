@@ -41,10 +41,22 @@ reporting_task:
     Using the insights provided, develop a report scoring the following attributes:
     {criteria}
     
-    Each attribute should be scored from 0 to 5.
-    Scores should be justified with a brief explanation.
-    Score penalties need to include a link to the source reference.
+    Respect the following standards:
+    - Each attribute should be scored from 0 to 5.
+    - Scores should be justified with a brief explanation.
+    - Score penalties need to include a link to the source reference.
+    - Score justification should be aggregated by criteria.
+      <example>
+        ### Scores Justification with References
+        
+        #### Support for Agents
+
+        1. **LangChain**: 5
+          - ...
+      </example>
+
   expected_output: >
     1) Comparison table with scores
     2) Attribute list, with a brief explanation of how eah attribute was evaluated
-    3) Scores justification with references.
+    3) Scores justification with references
+    4) Links for each one of the tools evaluated
