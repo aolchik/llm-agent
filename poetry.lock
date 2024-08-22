@@ -735,19 +735,19 @@ cron = ["capturer (>=2.4)"]
 
 [[package]]
 name = "crewai"
-version = "0.41.1"
+version = "0.51.1"
 description = "Cutting-edge framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks."
 optional = false
 python-versions = "<=3.13,>=3.10"
 files = [
-    {file = "crewai-0.41.1-py3-none-any.whl", hash = "sha256:27ec7b414b9f1344c63bfea4b5823613d97005b9664a7d4843242728c07f936b"},
-    {file = "crewai-0.41.1.tar.gz", hash = "sha256:ef07c6a9477423bd204dfeb9541d60408e3278695471ec75a8337a0f73fa290e"},
+    {file = "crewai-0.51.1-py3-none-any.whl", hash = "sha256:c36f23bb317726c84249fd1341363c7b9916ec0865dbe1c273ced94451c4dd89"},
+    {file = "crewai-0.51.1.tar.gz", hash = "sha256:3266b08db6f06162816cb83b291b64ab4d8cd10b024b82478f62f5b368a32ce6"},
 ]
 
 [package.dependencies]
 appdirs = ">=1.4.4,<2.0.0"
 click = ">=8.1.7,<9.0.0"
-crewai-tools = {version = ">=0.4.26,<0.5.0", optional = true, markers = "extra == \"tools\""}
+crewai-tools = {version = ">=0.8.3,<0.9.0", optional = true, markers = "extra == \"tools\""}
 embedchain = ">=0.1.114,<0.2.0"
 instructor = "1.3.3"
 json-repair = ">=0.25.2,<0.26.0"
@@ -763,17 +763,17 @@ regex = ">=2023.12.25,<2024.0.0"
 
 [package.extras]
 agentops = ["agentops (>=0.3.0,<0.4.0)"]
-tools = ["crewai-tools (>=0.4.26,<0.5.0)"]
+tools = ["crewai-tools (>=0.8.3,<0.9.0)"]
 
 [[package]]
 name = "crewai-tools"
-version = "0.4.26"
+version = "0.8.3"
 description = "Set of tools for the crewAI framework"
 optional = false
 python-versions = "<=3.13,>=3.10"
 files = [
-    {file = "crewai_tools-0.4.26-py3-none-any.whl", hash = "sha256:c5d062a613f65bda4af2621eba66b14a6227b0e1b12ef385828a28259f5d6ce5"},
-    {file = "crewai_tools-0.4.26.tar.gz", hash = "sha256:f73569b543a886f0ef52cc8ae5dc7a3a287be9f7614518e4c64886454aeb5c4b"},
+    {file = "crewai_tools-0.8.3-py3-none-any.whl", hash = "sha256:a54a10c36b8403250e13d6594bd37db7e7deb3f9fabc77e8720c081864ae6189"},
+    {file = "crewai_tools-0.8.3.tar.gz", hash = "sha256:f0317ea1d926221b22fcf4b816d71916fe870aa66ed7ee2a0067dba42b5634eb"},
 ]
 
 [package.dependencies]
@@ -2315,8 +2315,8 @@ langchain-core = ">=0.2.32,<0.3.0"
 langchain-text-splitters = ">=0.2.0,<0.3.0"
 langsmith = ">=0.1.17,<0.2.0"
 numpy = [
-    {version = ">=1,<2", markers = "python_version < \"3.12\""},
     {version = ">=1.26.0,<2.0.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1,<2", markers = "python_version < \"3.12\""},
 ]
 pydantic = ">=1,<3"
 PyYAML = ">=5.3"
@@ -2363,8 +2363,8 @@ langchain = ">=0.2.13,<0.3.0"
 langchain-core = ">=0.2.30,<0.3.0"
 langsmith = ">=0.1.0,<0.2.0"
 numpy = [
-    {version = ">=1,<2", markers = "python_version < \"3.12\""},
     {version = ">=1.26.0,<2.0.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1,<2", markers = "python_version < \"3.12\""},
 ]
 PyYAML = ">=5.3"
 requests = ">=2,<3"
@@ -2387,8 +2387,8 @@ jsonpatch = ">=1.33,<2.0"
 langsmith = ">=0.1.75,<0.2.0"
 packaging = ">=23.2,<25"
 pydantic = [
-    {version = ">=1,<3", markers = "python_full_version < \"3.12.4\""},
     {version = ">=2.7.4,<3.0.0", markers = "python_full_version >= \"3.12.4\""},
+    {version = ">=1,<3", markers = "python_full_version < \"3.12.4\""},
 ]
 PyYAML = ">=5.3"
 tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<9.0.0"
@@ -2471,8 +2471,8 @@ files = [
 [package.dependencies]
 orjson = ">=3.9.14,<4.0.0"
 pydantic = [
-    {version = ">=1,<3", markers = "python_full_version < \"3.12.4\""},
     {version = ">=2.7.4,<3.0.0", markers = "python_full_version >= \"3.12.4\""},
+    {version = ">=1,<3", markers = "python_full_version < \"3.12.4\""},
 ]
 requests = ">=2,<3"
 
@@ -3377,9 +3377,9 @@ files = [
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
-    {version = ">=1.22.4", markers = "python_version < \"3.11\""},
     {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1.22.4", markers = "python_version < \"3.11\""},
+    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -3706,8 +3706,8 @@ files = [
 annotated-types = ">=0.4.0"
 pydantic-core = "2.20.1"
 typing-extensions = [
-    {version = ">=4.6.1", markers = "python_version < \"3.13\""},
     {version = ">=4.12.2", markers = "python_version >= \"3.13\""},
+    {version = ">=4.6.1", markers = "python_version < \"3.13\""},
 ]
 
 [package.extras]
@@ -4130,8 +4130,8 @@ grpcio = ">=1.41.0"
 grpcio-tools = ">=1.41.0"
 httpx = {version = ">=0.20.0", extras = ["http2"]}
 numpy = [
-    {version = ">=1.21", markers = "python_version >= \"3.8\" and python_version < \"3.12\""},
     {version = ">=1.26", markers = "python_version >= \"3.12\""},
+    {version = ">=1.21", markers = "python_version >= \"3.8\" and python_version < \"3.12\""},
 ]
 portalocker = ">=2.7.0,<3.0.0"
 pydantic = ">=1.10.8"
@@ -5517,4 +5517,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<=3.13"
-content-hash = "e3c99979bded535c9b30850ede4e28d2e8dc84b12ede4cfca9c621fad6754cc0"
+content-hash = "3895f349f8449b5fd524613739a4eeae391e1f25f628ab928d88279ecab7ae33"

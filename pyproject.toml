@@ -6,7 +6,7 @@ authors = ["Alejandro Olchik <alejandro@orulo.com.br>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.13"
-crewai = { extras = ["tools"], version = "^0.41.1" }
+crewai = { extras = ["tools"], version = "^0.51.0" }
 langtrace-python-sdk = "^2.2.20"
 agentops = "^0.3.9"
 langchain-google-genai = "^1.0.9"

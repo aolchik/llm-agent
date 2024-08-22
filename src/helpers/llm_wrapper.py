@@ -1,11 +1,10 @@
 import os
 
 #from langchain_openai.llms.base import OpenAI
-from langchain_openai import ChatOpenAI
-
-from langchain_community.llms import Ollama
-
 from google.oauth2 import service_account
+
+from langchain_openai import ChatOpenAI
+from langchain_community.llms import Ollama
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 
@@ -17,7 +16,7 @@ def get_model_name(llm):
   elif isinstance(llm, ChatOpenAI):
     return llm.model_name
   else:
-    return None
+    raise ValueError(f"Unknown LLM model: {llm}")
 
 def get_llm(model_name):
   if model_name == 'gemini-1.5-flash':

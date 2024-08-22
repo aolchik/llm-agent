@@ -3,7 +3,13 @@
 
 ## Observability
 
-bug: agentops: not tracking openhermes and gemini
+### AgentOps
+
+!bug: agentops: not tracking openhermes and gemini
+  discord: community inquiry
+  https://discord.com/channels/1139221568803840152/1231088794011172945/1276126960736669768
+  
+bug: agentops: const informed locally do not match cost on the web
 
 ## Test Automation
 so that
@@ -26,6 +32,11 @@ spike: how to compare quality of different outputs
 ## Integrations
 
 spike: composio.dev
+
+spike: crewai: human interaction agent
+
+spike: langraph for event collection
+  https://github.com/crewAIInc/crewAI-examples/blob/main/CrewAI-LangGraph/README.md
 
 ## Agent Architecture & Models
 so that
