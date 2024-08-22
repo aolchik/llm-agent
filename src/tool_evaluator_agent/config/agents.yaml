@@ -10,7 +10,7 @@ researcher:
 
 report_producer:
   role: >
-    'Tech Report Producer
+    Tech Report Producer
   goal: >
     Craft compelling reports on tool comparison
   backstory: >

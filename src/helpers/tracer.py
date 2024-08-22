@@ -1,7 +1,4 @@
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 AGENTOPS_API_KEY = os.getenv("AGENTOPS_API_KEY")
 LANGTRACE_API_KEY = os.getenv("LANGTRACE_API_KEY")

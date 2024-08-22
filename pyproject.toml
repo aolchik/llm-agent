@@ -9,6 +9,7 @@ python = ">=3.10,<=3.13"
 crewai = { extras = ["tools"], version = "^0.41.1" }
 langtrace-python-sdk = "^2.2.20"
 agentops = "^0.3.9"
+langchain-google-genai = "^1.0.9"
 
 [tool.poetry.scripts]
 tool-evaluator-agent = "tool_evaluator_agent.main:run"

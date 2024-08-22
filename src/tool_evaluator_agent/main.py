@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 import sys
+
 from tool_evaluator_agent.crew import ToolEvaluatorAgentCrew
 from helpers.tracer import Tracer
 
 from dotenv import load_dotenv
-
+load_dotenv()
 
 # This main file is intended to be a way for your to run your
 # crew locally, so refrain from adding necessary logic into this file.
 # Replace with inputs you want to test with, it will automatically
 # interpolate any tasks and agents information
 
-load_dotenv()
-        
 tracer = Tracer()
 
 crew_inputs = {
@@ -21,7 +20,7 @@ crew_inputs = {
         - Comprehensive support for the development of multi-step AI agents
         - Low vendor lock-in
         - Support for higher end LLM models (e.g. GPT-4, Gemini, ...)
-        - Support for zero cost models (e.g. Open Hermes, ...)
+        - Support for zero cost LLM models (e.g. Open Hermes, ...)
         - Good documentation
         - Strong community support
         - RAG (Retrieval-Augmented Generation) support
@@ -32,8 +31,9 @@ crew_inputs = {
         - phidata
         - CrewAI
         - Amazon Bedrock
-        '''
+        ''',
 }
+
 
 def run():
     """
@@ -54,7 +54,7 @@ def train():
     """
     inputs = crew_inputs
     try:
-        ToolEvaluatorAgentCrew().crew().train(n_iterations=int(sys.argv[1]), inputs=inputs)
+        ToolEvaluatorAgentCrew().crew(params=crew_params).train(n_iterations=int(sys.argv[1]), inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")

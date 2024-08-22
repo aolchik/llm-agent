@@ -42,6 +42,24 @@ This command initializes the tool-evaluator-agent Crew, assembling the agents an
 
 This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
 
+
+## Replaying Tasks
+
+Too check tasks IDs, run this from src folder of your project:
+
+```bash
+crewai log-tasks-outputs
+```
+
+To replay a task, run this from src folder of your project:
+
+```bash
+crewai replay -t <task_id>
+```
+
+## Testing your Agent
+
+
 ## Understanding Your Crew
 
 The tool-evaluator-agent Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
