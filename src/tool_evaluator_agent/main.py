@@ -15,7 +15,7 @@ load_dotenv()
 tracer = Tracer()
 
 crew_inputs = {
-    'topic': 'plaforms for developmet of applications that use LLM',
+    'topic': 'plaforms for development of applications that use LLM',
     'criteria': '''
         - Comprehensive support for the development of multi-step AI agents
         - Low vendor lock-in
@@ -27,10 +27,11 @@ crew_inputs = {
         - Rich ecosystem of integrations and toolkits
         ''',
     'tools': '''
-        - LangChain
-        - phidata
-        - CrewAI
         - Amazon Bedrock
+        - CrewAI
+        - LangChain
+        - LangGraph
+        - phidata
         ''',
 }
 
