@@ -2,17 +2,14 @@
 import sys
 
 from tool_evaluator_agent.crew import ToolEvaluatorAgentCrew
-from helpers.tracer import Tracer
+from helpers.tracer import TracerFactory, TracerAnnotation
 
 from dotenv import load_dotenv
 load_dotenv()
 
-# This main file is intended to be a way for your to run your
-# crew locally, so refrain from adding necessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
-tracer = Tracer()
+tracer = TracerFactory.get_tracer()
+tracer.provider = 'helicone'
+tracer.annotation = TracerAnnotation(app='tool_evaluator_agent')
 
 crew_inputs = {
     'topic': 'plaforms for development of applications that use LLM',
@@ -41,11 +38,11 @@ def run():
     Run the crew.
     """
     inputs = crew_inputs
-    
-    tracer.init(default_tags=['tool_evaluator_agent'])
-    
+
+    tracer.init()
+
     ToolEvaluatorAgentCrew().crew().kickoff(inputs=inputs)
-    
+
     tracer.end()
 
 
@@ -55,10 +52,12 @@ def train():
     """
     inputs = crew_inputs
     try:
-        ToolEvaluatorAgentCrew().crew(params=crew_params).train(n_iterations=int(sys.argv[1]), inputs=inputs)
+        ToolEvaluatorAgentCrew().crew().train(n_iterations=int(sys.argv[1]),
+                                              inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
+
 
 def replay():
     """

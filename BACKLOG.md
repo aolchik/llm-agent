@@ -1,22 +1,19 @@
 
 # End Platform Comparison
 
-## Observability
-
-### AgentOps
-
-!bug: agentops: not tracking openhermes and gemini
-  discord: community inquiry
-  https://discord.com/channels/1139221568803840152/1231088794011172945/1276126960736669768
-  
-bug: agentops: const informed locally do not match cost on the web
-
 ## Test Automation
 so that
   previous fetures are supported at agent change
   understand the support of each platform to tests
 
 spike: crewai testing feature
+spike: evals
+
+## Observability
+
+feat: helicone: use session paths and names to better track agents and tasks
+refactor: tracer: support parallel execution
+refactor: llm wrapper: reuse instance models through factory pattern
 
 ## Investigation, Debugging and Experimentation
 
@@ -24,6 +21,10 @@ feat: support for questioning the result
 
 spike: CrewAi - Long Term memory
   How to reuse information already gathered
+
+bug: logger not working
+  works on canvas
+  does not work during agent execution
 
 ## Quality metrics
 

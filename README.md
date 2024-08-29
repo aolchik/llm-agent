@@ -60,6 +60,20 @@ crewai replay -t <task_id>
 ## Testing your Agent
 
 
+## Checking your Source Code
+
+To test your source code, run this from the root folder of your project:
+
+```bash
+poetry run pytest
+```
+
+To lint your source code, run this from the root folder of your project:
+
+```bash
+poetry run flake8
+```
+
 ## Understanding Your Crew
 
 The tool-evaluator-agent Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.

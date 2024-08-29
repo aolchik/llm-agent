@@ -12,10 +12,25 @@ agentops = "^0.3.9"
 langchain-google-genai = "^1.0.9"
 
 [tool.poetry.scripts]
-tool-evaluator-agent = "tool_evaluator_agent.main:run"
+agent = "tool_evaluator_agent.main:run"
 train = "tool_evaluator_agent.main:train"
 replay = "tool_evaluator_agent.main:replay"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+flake8 = "^7.1.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=src --cov-report=term-missing --cov-config=.coveragerc"
+testpaths = [
+  "src/tests"
+]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203"
