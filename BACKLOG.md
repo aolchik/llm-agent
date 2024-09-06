@@ -6,8 +6,48 @@ so that
   previous fetures are supported at agent change
   understand the support of each platform to tests
 
-spike: crewai testing feature
+poc: truelens
+  https://www.trulens.org/
+  (+) easy to use
+  (+) run on current executions
+  (+) support for multiple metrics
+  (+) can run on logged interactions
+  (+) feedback cost measured separatedly
+
+poc: crewai testing feature
+  (+) scores each task separatedly
+  (-) do not explain reasons behind scores
+  (-) do not trace evaluator interactions
+
+  issue: cache may be affecting results
+    test and understand how helicone cache works (one task at a time)
+  
+  bug: research report in the wrong folder
+
+  bug: report is not being generated
+
 spike: evals
+  https://cookbook.openai.com/examples/evaluation/getting_started_with_openai_evals
+  https://wandb.ai/wandb_fc/openai-evals/reports/OpenAI-Evals-Demo-Using-W-B-Prompts-to-Run-Evaluations--Vmlldzo0MTI4ODA3
+  (+) flexibility
+  (-) requires an ideal answer (task spec wouldn't be enough?)
+  (-) requires a lot of manual work
+  (-) learning curve
+  (-) uncertainty of how to apply to multi-step agents
+  (-) uncertainty of how to apply with no ideal answers
+
+bug: agentops could not start session during training
+  disable agentops
+
+issue: reached maximum token per minutes
+  limit GPT-4o utilization
+
+## Cost Control
+
+spike: helicone: cash and adding data
+
+spike: CrewAi - Long Term memory
+  How to reuse information already gathered
 
 ## Observability
 
@@ -18,9 +58,6 @@ refactor: llm wrapper: reuse instance models through factory pattern
 ## Investigation, Debugging and Experimentation
 
 feat: support for questioning the result
-
-spike: CrewAi - Long Term memory
-  How to reuse information already gathered
 
 bug: logger not working
   works on canvas
@@ -43,6 +80,12 @@ spike: langraph for event collection
 so that
   compare cost, latency and quality of different agent architectures
   see https://artificialanalysis.ai/
+
+
+spike: LLM Powered Autonoous Agents
+  https://lilianweng.github.io/posts/2023-06-23-agent/
+
+spike: [Optimizing LLM Apps - 2024-01-08](https://klu.ai/blog/optimizing-llm-app-features)
 
 spike: crewai: hierarchical process
   bug: didn't write the final report 1/2
