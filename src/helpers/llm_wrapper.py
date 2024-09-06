@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 from langchain_community.llms import Ollama
 from langchain_google_genai import ChatGoogleGenerativeAI
 from helpers.tracer import TracerFactory
-
+from pydantic import BaseModel
 
 tracer = TracerFactory.get_tracer()
 
@@ -20,7 +20,11 @@ def get_model_name(llm):
         raise ValueError(f"Unknown LLM model: {llm}")
 
 
-def get_llm(model_provider, model_name):
+class ModelParams(BaseModel):
+    use_cache: bool = True
+
+
+def get_llm(model_provider, model_name, config: ModelParams = ModelParams()):
     """
     Get the LLM model based on the model provider and model name.
     model_provider: str
@@ -64,7 +68,7 @@ def get_llm(model_provider, model_name):
         }
 
         if tracer:
-            proxy_config = tracer.get_proxy_config()
+            proxy_config = tracer.get_proxy_config(config.use_cache)
             if proxy_config:
                 if proxy_config.url:
                     params["base_url"] = proxy_config.url

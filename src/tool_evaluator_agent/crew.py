@@ -1,6 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from helpers.llm_wrapper import get_llm, get_model_name
+from helpers.llm_wrapper import get_llm, get_model_name, ModelParams
 from helpers.tracer import Tracer
 from crewai_tools import SerperDevTool
 from tool_evaluator_agent.tools.scraping_fish_tool import ScrapingFishTool
@@ -15,6 +15,7 @@ current_datetime = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
 DEFAULT_LLM_PROVIDER = 'openai'
 DEFAULT_LLM_MODEL = 'gpt-3.5-turbo-1106'
+params: ModelParams = ModelParams(use_cache=False)
 
 
 @CrewBase

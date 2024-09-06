@@ -58,14 +58,14 @@ class Tracer(BaseModel):
         if self.provider == 'agentops':
             agentops.end_session("Success")
 
-    def get_proxy_config(self) -> LLMProxyConfig | None:
+    def get_proxy_config(self, use_cache=True) -> LLMProxyConfig | None:
         logger.debug(f"Tracer get_proxy_config with provider: {self.provider}")
         print(f"Tracer get_proxy_config with provider: {self.provider}")
 
         if self.provider == 'helicone':
             headers = {
                 "Helicone-Auth": f"Bearer {os.getenv('HELICONE_API_KEY')}",
-                "Helicone-Cache-Enabled": "true",
+                "Helicone-Cache-Enabled": f"{use_cache}",
             }
             if self.annotation:
                 if self.annotation.session:

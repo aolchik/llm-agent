@@ -60,7 +60,7 @@ class TestTracer(unittest.TestCase):
 
         expected_headers = {
             "Helicone-Auth": f"Bearer {os.getenv('HELICONE_API_KEY')}",
-            "Helicone-Cache-Enabled": "true",
+            "Helicone-Cache-Enabled": "True",
         }
 
         self.assertEqual(
@@ -86,7 +86,7 @@ class TestTracer(unittest.TestCase):
 
         expected_headers = {
             "Helicone-Auth": f"Bearer {os.getenv('HELICONE_API_KEY')}",
-            "Helicone-Cache-Enabled": "true",
+            "Helicone-Cache-Enabled": "True",
             "Helicone-Session-Id": tracer_annotation.session,
             "Helicone-Property-App": tracer_annotation.app
         }

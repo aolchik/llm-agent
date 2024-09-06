@@ -36,6 +36,18 @@ class TestLLMWrapper(unittest.TestCase):
 
         mock_ollama.assert_called_once_with(model=model_name)
 
+    @patch('helpers.llm_wrapper.ChatOpenAI')
+    def test_get_llm_openai(self, mock_chat_openai):
+        model_provider = 'openai'
+        model_name = 'gpt-4o'
+
+        get_llm(model_provider, model_name)
+
+        mock_chat_openai.assert_called_once_with(model=model_name,
+                                                 temperature=0,
+                                                 verbose=True,
+                                                 stream_usage=True)
+
     def test_raise_exception_on_invalid_provider(self):
         model_provider = 'invalid_provider'
         model_name = 'invalid_model'
@@ -56,7 +68,7 @@ class TestLLMWrapper(unittest.TestCase):
 
         with self.assertRaises(Exception):
             get_llm(model_provider, model_name)
-            
+
     def test_raise_exception_on_invalid_model_from_ollama(self):
         model_provider = 'ollama'
         model_name = 'invalid_model'
