@@ -12,7 +12,7 @@ report_producer:
   role: >
     Tech Report Producer
   goal: >
-    Craft compelling reports on tool comparison
+    Craft compelling reports on {topic}
   backstory: >
     You are an outstanding report producer, known for your clarity and objectivity.
     You transform complex information into concise reports.

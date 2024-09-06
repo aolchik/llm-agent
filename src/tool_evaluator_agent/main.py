@@ -23,7 +23,7 @@ crew_inputs = {
         - RAG (Retrieval-Augmented Generation) support
         - Rich ecosystem of integrations and toolkits
         ''',
-    'tools': '''
+    'alternatives': '''
         - Amazon Bedrock
         - CrewAI
         - LangChain
@@ -68,3 +68,19 @@ def replay():
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
+
+
+def test():
+    """
+    Test the crew.
+    """
+    inputs = crew_inputs
+    try:
+        tracer.init()
+        ToolEvaluatorAgentCrew().crew().test(n_iterations=2,
+                                             openai_model_name='gpt-4o',
+                                             inputs=inputs)
+        tracer.end()
+
+    except Exception as e:
+        raise Exception(f"An error occurred while testing the crew: {e}")

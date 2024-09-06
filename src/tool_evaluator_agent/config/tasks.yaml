@@ -25,11 +25,11 @@ criteria_clarification_task:
 research_task:
   description: >
     Conduct a comprehensive analysis of {topic}.
-    Identify platform trends, adoption, strenghts and weeknesses, mainly focusing on the following criteria:
+    Identify trends, adoption, strenghts and weeknesses, mainly focusing on the following criteria:
     {criteria}
   
-    Consider the following tools:
-    {tools}
+    Evaluate the following alternatives according to criteria:
+    {alternatives}
   expected_output: >
     Full analysis report with:
     - bullet points for each tool,
@@ -40,6 +40,9 @@ reporting_task:
   description: >
     Using the insights provided, develop a report scoring the following attributes:
     {criteria}
+
+    For each one of the following alternatives:
+    {alternatives}
     
     Respect the following standards:
     - Each attribute should be scored from 0 to 5.

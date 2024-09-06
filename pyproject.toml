@@ -15,6 +15,7 @@ langchain-google-genai = "^1.0.9"
 agent = "tool_evaluator_agent.main:run"
 train = "tool_evaluator_agent.main:train"
 replay = "tool_evaluator_agent.main:replay"
+test = "tool_evaluator_agent.main:test"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.2"
