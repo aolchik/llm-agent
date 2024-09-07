@@ -7,3 +7,9 @@ output/
 
 # MacOS
 .DS_Store
+
+# Streamlit
+.streamlit/
+
+# SQLite
+*.sqlite
