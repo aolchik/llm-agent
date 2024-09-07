@@ -1,58 +1,28 @@
 
 # End Platform Comparison
 
+
 ## Test Automation
 so that
   previous fetures are supported at agent change
   understand the support of each platform to tests
 
-poc: truelens
-  https://www.trulens.org/
-  (+) easy to use
-  (+) run on current executions
-  (+) support for multiple metrics
-  (+) can run on logged interactions
-  (+) feedback cost measured separatedly
-
-poc: crewai testing feature
-  (+) scores each task separatedly
-  (-) do not explain reasons behind scores
-  (-) do not trace evaluator interactions
-
-  issue: cache may be affecting results
-    test and understand how helicone cache works (one task at a time)
-  
-  bug: research report in the wrong folder
-
-  bug: report is not being generated
-
-spike: evals
-  https://cookbook.openai.com/examples/evaluation/getting_started_with_openai_evals
-  https://wandb.ai/wandb_fc/openai-evals/reports/OpenAI-Evals-Demo-Using-W-B-Prompts-to-Run-Evaluations--Vmlldzo0MTI4ODA3
-  (+) flexibility
-  (-) requires an ideal answer (task spec wouldn't be enough?)
-  (-) requires a lot of manual work
-  (-) learning curve
-  (-) uncertainty of how to apply to multi-step agents
-  (-) uncertainty of how to apply with no ideal answers
-
-bug: agentops could not start session during training
-  disable agentops
-
-issue: reached maximum token per minutes
-  limit GPT-4o utilization
+feat: feedback report for each task
 
 ## Cost Control
 
-spike: helicone: cash and adding data
+spike: CrewAi - Long Term memory - how to reuse information already gathered
 
-spike: CrewAi - Long Term memory
-  How to reuse information already gathered
+spike: helicone: using cache and adding data
+
+bug: trulens: cost tracking now working
 
 ## Observability
 
 feat: helicone: use session paths and names to better track agents and tasks
+
 refactor: tracer: support parallel execution
+
 refactor: llm wrapper: reuse instance models through factory pattern
 
 ## Investigation, Debugging and Experimentation
@@ -108,6 +78,10 @@ spike: crew training
 feat: improvement agent
 
 ## Report Improvement
+
+bug: research report is not being generated
+
+bug: research report in the wrong folder
 
 bug: better support for agents is considering LangGraph Cloud
   Separate LangGraph and LangChain

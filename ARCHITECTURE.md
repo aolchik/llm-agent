@@ -1,9 +1,9 @@
 
-# Obervability
+# Obervability & Feedback
 
 ## Decision
 
-Helicone
+Helicone + Truelens
 
 ## Options
 
@@ -22,6 +22,23 @@ Helicone
             log: 0.058
             web: <0.01
 
+## crewai testing feature
+
+(+) scores each task separatedly
+(-) do not explain reasons behind scores
+(-) do not trace evaluator interactions
+
+## Evals
+https://cookbook.openai.com/examples/evaluation/getting_started_with_openai_evals
+https://wandb.ai/wandb_fc/openai-evals/reports/OpenAI-Evals-Demo-Using-W-B-Prompts-to-Run-Evaluations--Vmlldzo0MTI4ODA3
+
+(+) flexibility
+(-) requires an ideal answer (task spec wouldn't be enough?)
+(-) requires a lot of manual work
+(-) learning curve
+(-) uncertainty of how to apply to multi-step agents
+(-) uncertainty of how to apply with no ideal answers
+
 ### Helicone
  
 (+) Accurate cost tracking
@@ -32,6 +49,15 @@ Helicone
 
 (-) No timeline view
 (+) Better metrics than AgenOps
+
+## Truelens
+https://www.trulens.org/
+
+(+) easy to use
+(+) run on current executions
+(+) support for multiple metrics
+(+) can run on logged interactions
+(+) feedback cost measured separatedly
 
 # LLM Abstractions
 
