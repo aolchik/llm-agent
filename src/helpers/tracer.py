@@ -37,9 +37,6 @@ class Tracer(BaseModel):
 
     def init(self, default_tags=[]):
         logger.debug(f"Tracer initialized with provider: {self.provider}")
-        print(f"Tracer initialized with provider: {self.provider}")
-        print(f"logger type: {type(logger)}")
-        print(f"logger instance: {logger}")
 
         if len(default_tags) > 0:
             tags = default_tags
@@ -60,7 +57,6 @@ class Tracer(BaseModel):
 
     def get_proxy_config(self, use_cache=True) -> LLMProxyConfig | None:
         logger.debug(f"Tracer get_proxy_config with provider: {self.provider}")
-        print(f"Tracer get_proxy_config with provider: {self.provider}")
 
         if self.provider == 'helicone':
             headers = {

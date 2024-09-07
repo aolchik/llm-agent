@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 
-from tool_evaluator_agent.crew import ToolEvaluatorAgentCrew
+from tool_evaluator_agent.crew import ToolEvalCrewFactory
 from helpers.tracer import TracerFactory, TracerAnnotation
 
 from dotenv import load_dotenv
@@ -41,7 +41,7 @@ def run():
 
     tracer.init()
 
-    ToolEvaluatorAgentCrew().crew().kickoff(inputs=inputs)
+    ToolEvalCrewFactory().crew().kickoff(inputs=inputs)
 
     tracer.end()
 
@@ -52,8 +52,8 @@ def train():
     """
     inputs = crew_inputs
     try:
-        ToolEvaluatorAgentCrew().crew().train(n_iterations=int(sys.argv[1]),
-                                              inputs=inputs)
+        ToolEvalCrewFactory().crew().train(n_iterations=int(sys.argv[1]),
+                                           inputs=inputs)
 
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
@@ -64,7 +64,7 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        ToolEvaluatorAgentCrew().crew().replay(task_id=sys.argv[1])
+        ToolEvalCrewFactory().crew().replay(task_id=sys.argv[1])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
@@ -77,9 +77,9 @@ def test():
     inputs = crew_inputs
     try:
         tracer.init()
-        ToolEvaluatorAgentCrew().crew().test(n_iterations=2,
-                                             openai_model_name='gpt-4o',
-                                             inputs=inputs)
+        ToolEvalCrewFactory().crew().test(n_iterations=2,
+                                          openai_model_name='gpt-4o',
+                                          inputs=inputs)
         tracer.end()
 
     except Exception as e:

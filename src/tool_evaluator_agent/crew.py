@@ -19,8 +19,8 @@ params: ModelParams = ModelParams(use_cache=False)
 
 
 @CrewBase
-class ToolEvaluatorAgentCrew():
-    """ToolEvaluatorAgent crew"""
+class ToolEvalCrewFactory():
+    """ToolEvalCrewFactory crew"""
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
     output_file_prefix = f'{current_datetime}_'
@@ -34,7 +34,7 @@ class ToolEvaluatorAgentCrew():
         return Agent(
             config=self.agents_config['researcher'],
             tools=[search_tool, scraping_fish_tool],
-            llm=get_llm(DEFAULT_LLM_PROVIDER, DEFAULT_LLM_MODEL),
+            llm=get_llm(DEFAULT_LLM_PROVIDER, DEFAULT_LLM_MODEL, params),
             verbose=True,
             max_iter=25
         )
@@ -43,7 +43,7 @@ class ToolEvaluatorAgentCrew():
     def report_producer(self) -> Agent:     
         return Agent(
             config=self.agents_config['report_producer'],
-            llm=get_llm(DEFAULT_LLM_PROVIDER, DEFAULT_LLM_MODEL),
+            llm=get_llm(DEFAULT_LLM_PROVIDER, DEFAULT_LLM_MODEL, params),
             verbose=True,
             max_iter=25
         )
@@ -85,15 +85,18 @@ class ToolEvaluatorAgentCrew():
         )
 
     @crew
-    def crew(self) -> Crew:
+    def crew(self, agents=None, tasks=None) -> Crew:
         """Creates the ToolEvaluatorAgent crew"""
+        agents = agents if agents else self.agents
+        tasks = tasks if tasks else self.tasks
         return Crew(
-            agents=self.agents,
-            tasks=self.tasks,
+            agents=agents,
+            tasks=tasks,
             process=Process.sequential,
             # process=Process.hierarchical,
             # manager_llm=get_llm("openai", "gpt-4o"),
             verbose=True,
+            memory=True,
             output_log_file=f'{self.log_dir}/'\
                             f'{self.output_file_prefix}'\
                             'tool_evaluator_agent_log.txt'
