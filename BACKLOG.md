@@ -2,6 +2,10 @@
 # End Platform Comparison
 
 
+## Pitch Formulation Agent
+
+feat: zero-shot pitch formulation agent
+
 ## Test Automation
 so that
   previous fetures are supported at agent change
@@ -12,6 +16,7 @@ feat: feedback report for each task
 ## Cost Control
 
 spike: CrewAi - Long Term memory - how to reuse information already gathered
+  https://community.crewai.com/t/memory-systems-in-crewai/235
 
 spike: helicone: using cache and adding data
 
