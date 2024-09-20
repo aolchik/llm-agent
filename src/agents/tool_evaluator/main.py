@@ -1,8 +1,9 @@
 #!/usr/bin/env python
+import os
 import sys
 
-from tool_evaluator_agent.crew import ToolEvalCrewFactory
-from helpers.tracer import TracerFactory, TracerAnnotation
+from agents.tool_evaluator.crew import ToolEvalCrewFactory
+from helpers import read_yaml, TracerFactory, TracerAnnotation
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -11,26 +12,8 @@ tracer = TracerFactory.get_tracer()
 tracer.provider = 'helicone'
 tracer.annotation = TracerAnnotation(app='tool_evaluator_agent')
 
-crew_inputs = {
-    'topic': 'plaforms for development of applications that use LLM',
-    'criteria': '''
-        - Comprehensive support for the development of multi-step AI agents
-        - Low vendor lock-in
-        - Support for higher end LLM models (e.g. GPT-4, Gemini, ...)
-        - Support for zero cost LLM models (e.g. Open Hermes, ...)
-        - Good documentation
-        - Strong community support
-        - RAG (Retrieval-Augmented Generation) support
-        - Rich ecosystem of integrations and toolkits
-        ''',
-    'alternatives': '''
-        - Amazon Bedrock
-        - CrewAI
-        - LangChain
-        - LangGraph
-        - phidata
-        ''',
-}
+crew_inputs = read_yaml(
+    f"input/{os.getenv('LLMAGENT_TOOL_EVALUATOR_CONFIG')}")['crew_inputs']
 
 
 def run():

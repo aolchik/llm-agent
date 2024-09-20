@@ -35,7 +35,7 @@ poetry install
 To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
 
 ```bash
-poetry run tool_evaluator_agent
+poetry run tool_evaluator
 ```
 
 This command initializes the tool-evaluator-agent Crew, assembling the agents and assigning them tasks as defined in your configuration.

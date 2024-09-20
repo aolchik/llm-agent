@@ -4,11 +4,23 @@
 
 ## Pitch Formulation Agent
 
-feat: zero-shot pitch formulation agent
+feat: output to Google Docs
+
+feat: start from an initial pitch
+
+feat: refine directly on Google Docs
+
+feat: draw visual sketches
+
+feat: do breadcrumbing
+
+feat: bring good benchmarks
+
+feat: improve based on feedback
 
 ## Test Automation
 so that
-  previous fetures are supported at agent change
+  previous features are supported at agent change
   understand the support of each platform to tests
 
 feat: feedback report for each task

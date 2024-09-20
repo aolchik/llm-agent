@@ -1,0 +1,41 @@
+
+feature_specification_task:
+  description: >
+    Define and scope the feature for {feature_name}, ensuring that it fits within the development cycle and aligns with the product's overall goals.
+
+    1) **Problem Definition**: 
+       Describe the core problem this feature will solve and why it is important to both the users and the business. Ensure the problem is clear, concise, and scoped to avoid ambiguity. 
+       
+       The main problem to solve is/are:
+       {specific_pain_points}
+
+    2) **Shaped Solution**: 
+       Provide a shaped solution for the problem. This should include sketches or visualizations that outline the functionality and user experience.
+       - Describe how the user interacts with this feature.
+       - List the primary actions or workflows the feature supports.
+       - Keep the solution at a high level to allow development flexibility but clear enough for a designer and developer to understand the core functionality.
+
+       Key aspects of the solution should be:
+       {key_solution_aspects}
+
+    3) **Scope and Boundaries**: 
+       Define the boundaries of the feature to ensure it can be completed within the designated cycle. Highlight what is included and explicitly state what is **out of scope**.
+       - Must-have: 
+         - The minimum feature set required to address the problem.
+         - Example: A form that allows users to generate a request with validation and error handling.
+       - Nice-to-have: 
+         - Features that could enhance the experience but are not essential for solving the problem.
+         - Example: Automated suggestions based on previous user inputs.
+
+    4) **No Over-Specification**: 
+       Provide enough detail to communicate the solution without dictating how it should be built. Allow flexibility for developers and designers to determine the best technical approach.
+
+    5) **Success Criteria**: 
+       Define how the success of the feature will be measured. Focus on measurable outcomes, such as performance improvements, increased user satisfaction, or decreased error rates.
+
+  expected_output: >
+    A functional spec, written in {language}, that includes:
+    1. A clear problem definition.
+    2. A high-level shaped solution, with supporting visuals if possible.
+    3. Clear scope, outlining must-have and nice-to-have features.
+    4. Success criteria for measuring the feature's effectiveness.
