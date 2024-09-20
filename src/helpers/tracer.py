@@ -3,12 +3,14 @@ import uuid
 from pydantic import BaseModel
 from enum import Enum
 from typing import Literal
-import agentops
 from langtrace_python_sdk import langtrace
 from helpers.logger import logger
 
 AGENTOPS_API_KEY = os.getenv("AGENTOPS_API_KEY")
 LANGTRACE_API_KEY = os.getenv("LANGTRACE_API_KEY")
+
+if not AGENTOPS_API_KEY:
+    agentops = None
 
 
 class TracerAnnotation(BaseModel):

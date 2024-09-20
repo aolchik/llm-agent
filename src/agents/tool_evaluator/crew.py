@@ -3,7 +3,7 @@ from crewai.project import CrewBase, agent, crew, task
 from helpers.llm_wrapper import get_llm, get_model_name, ModelParams
 from helpers.tracer import Tracer
 from crewai_tools import SerperDevTool
-from tool_evaluator_agent.tools.scraping_fish_tool import ScrapingFishTool
+from agents.tool_evaluator.tools import ScrapingFishTool
 from datetime import datetime
 
 # Check our tools documentations for more information on how to use them
@@ -40,7 +40,7 @@ class ToolEvalCrewFactory():
         )
 
     @agent
-    def report_producer(self) -> Agent:     
+    def report_producer(self) -> Agent:
         return Agent(
             config=self.agents_config['report_producer'],
             llm=get_llm(DEFAULT_LLM_PROVIDER, DEFAULT_LLM_MODEL, params),
