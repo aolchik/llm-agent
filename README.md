@@ -21,6 +21,18 @@ poetry lock
 ```bash
 poetry install
 ```
+
+### Composio.dev
+
+To be able to run agents that write to Google Docs, the composio.dev scopes need to be augmented with the following list:
+```
+https://www.googleapis.com/auth/documents,
+https://www.googleapis.com/auth/userinfo.email,
+https://www.googleapis.com/auth/drive
+```
+
+This correction should be performed before to connection your Google account, in Integrations > Settings.
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
@@ -39,8 +51,6 @@ poetry run tool_evaluator
 ```
 
 This command initializes the tool-evaluator-agent Crew, assembling the agents and assigning them tasks as defined in your configuration.
-
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
 
 
 ## Replaying Tasks
@@ -86,4 +96,3 @@ For support, questions, or feedback regarding the ToolEvaluatorAgent Crew or cre
 - [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
 - [Chat with our docs](https://chatg.pt/DWjSBZn)
 
-Let's create wonders together with the power and simplicity of crewAI.

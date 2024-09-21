@@ -20,6 +20,7 @@ ipytree = "^0.2.2"
 trulens-providers-bedrock = "^1.0.1"
 python-dotenv = "^1.0.1"
 pyyaml = "^6.0.2"
+composio-crewai = "^0.5.25"
 
 [tool.poetry.scripts]
 tool_evaluator = "agents.tool_evaluator.main:run"

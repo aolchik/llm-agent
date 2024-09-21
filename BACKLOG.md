@@ -4,7 +4,7 @@
 
 ## Pitch Formulation Agent
 
-feat: output to Google Docs
+feat: support Google Docs formatting
 
 feat: start from an initial pitch
 
@@ -17,6 +17,16 @@ feat: do breadcrumbing
 feat: bring good benchmarks
 
 feat: improve based on feedback
+
+## Plot insightful data
+
+spike: composio.dev sql agent
+  https://docs.composio.dev/examples/combined/sql-agent
+
+## Newletter Summarizer
+
+spike: composio.dev newsletter sumamrizer
+  https://docs.composio.dev/examples/combined/newsletter_summarizer
 
 ## Test Automation
 so that
@@ -55,8 +65,6 @@ bug: logger not working
 spike: how to compare quality of different outputs
 
 ## Integrations
-
-spike: composio.dev
 
 spike: crewai: human interaction agent
 
