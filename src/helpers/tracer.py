@@ -9,6 +9,7 @@ from helpers.logger import logger
 AGENTOPS_API_KEY = os.getenv("AGENTOPS_API_KEY")
 LANGTRACE_API_KEY = os.getenv("LANGTRACE_API_KEY")
 
+# AgentOps is not being imported anymore as it cannot be completely disabled
 if not AGENTOPS_API_KEY:
     agentops = None
 
