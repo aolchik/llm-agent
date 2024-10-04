@@ -64,6 +64,15 @@ class FeatureFormulatorCrewFactory():
             tools=gdocs_update_tools,
             output_file=output_file
         )
+        
+    @task
+    def google_docs_formatting_task(self) -> Task:
+        agent = self.product_owner()
+        return Task(
+            config=self.tasks_config['google_docs_formatting_task'],
+            agent=agent,
+            tools=gdocs_update_tools
+        )
 
     @crew
     def crew(self, agents=None, tasks=None) -> Crew:
