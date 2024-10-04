@@ -5,6 +5,7 @@ from langchain_community.llms import Ollama
 from langchain_google_genai import ChatGoogleGenerativeAI
 from helpers.tracer import TracerFactory
 from pydantic import BaseModel
+from langchain_openai import OpenAIEmbeddings
 
 tracer = TracerFactory.get_tracer()
 
@@ -22,6 +23,16 @@ def get_model_name(llm):
 
 class ModelParams(BaseModel):
     use_cache: bool = True
+
+
+def _add_tracer_params(params, config):
+    if tracer:
+        proxy_config = tracer.get_proxy_config(config.use_cache)
+        if proxy_config:
+            if proxy_config.url:
+                params["base_url"] = proxy_config.url
+            if proxy_config.headers:
+                params["default_headers"] = proxy_config.headers
 
 
 def get_llm(model_provider, model_name, config: ModelParams = ModelParams()):
@@ -55,26 +66,32 @@ def get_llm(model_provider, model_name, config: ModelParams = ModelParams()):
         return Ollama(model=model_name)
 
     elif model_provider == 'openai':
-        openai_valid_models = ['gpt-4o', 'gpt-3.5-turbo-1106']
+        openai_valid_chat_models = ['gpt-4o', 'gpt-3.5-turbo-1106']
+        openai_valid_embedding_models = ['text-embedding-3-large']
 
-        if model_name not in openai_valid_models:
+        if model_name in openai_valid_chat_models:
+            params = {
+                "model": model_name,
+                "temperature": 0,
+                "verbose": True,
+                "stream_usage": True,  # required for Helicone cost tracking
+            }
+
+            _add_tracer_params(params, config)
+
+            return ChatOpenAI(**params)
+
+        elif model_name in openai_valid_embedding_models:
+            params = {
+                "model": model_name
+            }
+
+            _add_tracer_params(params, config)
+
+            return OpenAIEmbeddings(**params)
+
+        else:
             raise Exception(f"Invalid OpenAI model: {model_name}")
 
-        params = {
-            "model": model_name,
-            "temperature": 0,
-            "verbose": True,
-            "stream_usage": True,  # required for Helicone cost tracking
-        }
-
-        if tracer:
-            proxy_config = tracer.get_proxy_config(config.use_cache)
-            if proxy_config:
-                if proxy_config.url:
-                    params["base_url"] = proxy_config.url
-                if proxy_config.headers:
-                    params["default_headers"] = proxy_config.headers
-
-        return ChatOpenAI(**params)
     else:
         raise Exception(f"Unknown model provider: {model_provider}")

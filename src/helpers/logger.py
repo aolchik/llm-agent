@@ -9,7 +9,7 @@ logging.basicConfig(
 )
 
 # Create a common logger instance
-logger = logging.getLogger('tool-evaluator-agent')
+logger = logging.getLogger('llm-agent')
 
 # Example: Adding a file handler
 file_handler = logging.FileHandler('logs/app-debug.log')

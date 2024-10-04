@@ -2,7 +2,7 @@ import os
 import uuid
 from pydantic import BaseModel
 from enum import Enum
-from typing import Literal
+from typing import Literal, Optional
 from langtrace_python_sdk import langtrace
 from helpers.logger import logger
 
@@ -15,11 +15,14 @@ if not AGENTOPS_API_KEY:
 
 
 class TracerAnnotation(BaseModel):
-    session: str = str(uuid.uuid4())
-    app: str | None
+    session: Optional[str] = None
+    app: str = ''
 
     def tags(self):
         return [self.app] if self.app else []
+
+    def generate_session(self):
+        self.session = str(uuid.uuid4())
 
 
 class TraceProvider(Enum):
@@ -38,8 +41,15 @@ class Tracer(BaseModel):
                       'disabled'] = 'disabled'
     annotation: TracerAnnotation | None = None
 
-    def init(self, default_tags=[]):
+    def init(self, default_tags=[], session_id=None) -> TracerAnnotation:
         logger.debug(f"Tracer initialized with provider: {self.provider}")
+
+        annotation = TracerAnnotation(app=self.annotation.app)
+
+        if not session_id:
+            annotation.generate_session()
+        else:
+            annotation.session = session_id
 
         if len(default_tags) > 0:
             tags = default_tags
@@ -52,13 +62,18 @@ class Tracer(BaseModel):
         if self.provider == 'langtrace':
             langtrace.init(api_key=LANGTRACE_API_KEY)
 
+        self.annotation = annotation
+        return annotation
+
     def end(self):
         logger.debug(f"Tracer ended with provider: {self.provider}")
 
         if self.provider == 'agentops':
             agentops.end_session("Success")
 
-    def get_proxy_config(self, use_cache=True) -> LLMProxyConfig | None:
+    def get_proxy_config(self, use_cache=True,
+                         annotation_context: TracerAnnotation | None = None
+                         ) -> LLMProxyConfig | None:
         logger.debug(f"Tracer get_proxy_config with provider: {self.provider}")
 
         if self.provider == 'helicone':
@@ -66,11 +81,18 @@ class Tracer(BaseModel):
                 "Helicone-Auth": f"Bearer {os.getenv('HELICONE_API_KEY')}",
                 "Helicone-Cache-Enabled": f"{use_cache}",
             }
-            if self.annotation:
-                if self.annotation.session:
+
+            if annotation_context:
+                annotation = annotation_context
+            else:
+                # Warning: not thread safe
+                annotation = self.annotation
+
+            if annotation:
+                if annotation.session:
                     headers["Helicone-Session-Id"] = \
-                        self.annotation.session
-                if self.annotation.app:
+                        annotation.session
+                if annotation.app:
                     headers["Helicone-Property-App"] = self.annotation.app
             return LLMProxyConfig(
                 url="https://oai.helicone.ai/v1",
@@ -88,6 +110,8 @@ class TracerFactory:
     def get_tracer():
         if TracerFactory.tracer_instance is None:
             TracerFactory.tracer_instance = Tracer()
+            TracerFactory.tracer_instance.annotation = TracerAnnotation(
+                app='llm_agent')
         return TracerFactory.tracer_instance
 
 # USAGE
