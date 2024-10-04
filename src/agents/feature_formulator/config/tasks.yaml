@@ -78,4 +78,59 @@ previous_spec_review_task:
     3. Adjustments or recommendations regarding scope or must-have/nice-to-have features.
     4. Any necessary clarifications or changes to ensure the spec fits within the development cycle.
 
-   
+google_docs_formatting_task:
+  description: >
+    Apply consistent formatting to the following Google Docs document using Google Docs formatting tools. 
+    Document to format: {pitch_spec_gdocs}
+
+    The task focuses solely on formatting elements like headings, bold, italic, and other text styles, without altering the document's organization or content structure.
+    You can ocasionally organize chunks of text to improve readibility and keep consistency, for example: adding a line-break, removing or adding heading numbers.
+
+    1) **Formatting Requirements**: 
+       Ensure the following formatting elements are applied consistently throughout the document:
+       - Headings: Apply appropriate heading levels (Heading 1, Heading 2, etc.) to section titles and subsections.
+       - Bold: Use bold formatting for important keywords, section headers, or terms that require emphasis.
+       - Italic: Apply italic formatting where necessary for emphasis or when citing terms, titles, or external references.
+       - Lists: Format bullet points and numbered lists where applicable.
+       - Line Spacing: Ensure consistent line spacing throughout the document (e.g., single or 1.15 spacing).
+       - Fonts: Ensure the same font and font size are used uniformly, unless otherwise specified.
+
+    2) **Scope and Boundaries**: 
+       The task is limited to formatting using Google Docs' native formatting tools. It should not include reorganization or editing of content.
+       - Must-have: 
+         - Application of consistent headings and text formatting (bold, italic, etc.).
+         - Proper formatting for lists and line spacing.
+         - Use of the GOOGLEDOCS_UPDATE_EXISTING_DOCUMENT feature to implement the changes.
+       - Out of scope: 
+         - Changing the structure or organization of the document.
+         - Editing or modifying text content.
+
+    3) **No Over-Specification**: 
+       Use general guidelines for formatting without dictating every individual formatting choice, leaving flexibility for the stylistic elements required by the document's content.
+
+    4) **Success Criteria**: 
+       Define success based on the following measurable outcomes:
+       - Consistent application of headings, bold, italic, and other text styles.
+       - Properly formatted lists and line spacing throughout the document.
+       - Document formatting aligns with typical professional standards.
+
+    5) **Process**:
+      - Break down the formatting tasks into smaller steps to ensure the correct application of styles. Apply one change at a time.
+
+    6) **Tools**:
+      - editDocs is a list of requests to be made to the Google Docs API. 
+         - Documentation of available API requests can be obtained from https://developers.google.com/docs/api/reference/rest/v1/documents/request
+         - Below some examples, 
+            - Inserts text at the beginning of the document: [{{ "insertText": {{ "location": {{ "index": 0 }}, "text": "Hello, world!" }} }}] 
+            - Delete a paragraph by its index: [{{ "deleteParagraph": {{ "location": {{ "index": 0 }} }} }}] 
+            - Replace all text in a paragraph: [{{ "replaceAllText": {{ "containsText": {{ "text": "Hello, world!" }}, "replaceText": "Hello, world!" }} }}] 
+            - Add a named range to a specific location: [{{ "createNamedRange": {{ "range": {{ "startIndex": 10, "endIndex": 20 }}, "name": "ExampleRange" }} }}] 
+            - Delete a named range by its name: [{{ "deleteNamedRange": {{ "name": "ExampleRange" }} }}] 
+            - Update paragraph style to make text bold from index 5 to 15: [{{ "updateParagraphStyle": {{ "range": {{ "startIndex": 5, "endIndex": 15 }}, "paragraphStyle": {{ "namedStyleType": "HEADING_1" }}, "fields": "namedStyleType" }} }}]
+
+  expected_output: >
+    A formatted Google Docs document that includes:
+    1. Consistent use of headings and subheadings.
+    2. Proper application of bold, italic, and other text styles.
+    3. Lists and line spacing formatted consistently.
+    4. Changes made using GOOGLEDOCS_UPDATE_EXISTING_DOCUMENT.
