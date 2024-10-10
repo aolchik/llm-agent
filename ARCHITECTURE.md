@@ -67,3 +67,12 @@ https://www.trulens.org/
 (-) Do not track LLM calls through langchain_community.chat_models.ChatLiteLLM
 (-) Documentation is not good.
 (-) Do not seem to support Google Gemini authentication throught credentials.
+
+# Vector Databases
+
+## Pinecode
+
+(+) Free tear
+(+) Easy to use
+(+) Good documentation
+(-) Does not support pagination
