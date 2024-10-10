@@ -1,3 +1,8 @@
-from .service import VectorStoreFactory
+from .service import VectorStoreFactory, VectorStoreWrapper
+from .tool import WhatsAppChatMessagesRetrieverTool
 
-__all__ = ["VectorStoreFactory"]
+__all__ = [
+    "VectorStoreFactory",
+    "VectorStoreWrapper",
+    "WhatsAppChatMessagesRetrieverTool"
+]

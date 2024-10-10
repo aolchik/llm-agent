@@ -75,18 +75,33 @@ class VectorStoreWrapper:
     def add_message(self, message: WhatsAppMessage):
         tracer.init(session_id=self.__get_session_id(message))
         document = self.__render_document(message)
-        logger.debug(f"Adding document to vector store: {document}")   
+        logger.debug(f"Adding document to vector store: {document}")
         self.vector_store.add_documents(documents=[document],
                                         ids=[document.metadata['messageId']],
                                         namespace=message.connectedPhone)
         tracer.end()
+
+    def search(self, namespace, filter, backoff_jump=1000):
+        k_size = backoff_jump
+        results = []
+        while True:
+            results = self.vector_store.similarity_search(
+                "",  # Dummy string - we want to search all
+                namespace=namespace,
+                k=k_size,
+                filter=filter
+            )
+            if len(results) < k_size:
+                break
+            k_size += backoff_jump
+        return results
 
 
 class VectorStoreFactory:
     vector_store_instances = {}
 
     @staticmethod
-    def get_vector_store(index_name: str):
+    def get_vector_store(index_name: str) -> VectorStoreWrapper:
         if index_name not in VectorStoreFactory.vector_store_instances:
             VectorStoreFactory.vector_store_instances[index_name] = \
                 VectorStoreWrapper(index_name)
